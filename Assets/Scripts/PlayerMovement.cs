@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Jaakon placeholder pelaajan liikkumis-scripti. Tätä toivon mukaan tullaan vielä reilusti parantamaan,
+    //Esim. ainakin hyoyn osalta
+
     public float moveSpeed = 10f;
     public float jumpForce = 10f;
     public LayerMask groundLayer;
