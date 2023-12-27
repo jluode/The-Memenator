@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 2f, groundLayer);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 2.5f, groundLayer);
 
         
         float horizontalInput = Input.GetAxis("Horizontal");

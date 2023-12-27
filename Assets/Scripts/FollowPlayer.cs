@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    //Jaakon simppeli kamera seuraa pelaajaa-scripti
+    // Jaakko - simple code for the camera to follow the player throughout the scene.
 
     public GameObject player;
     private Vector3 offset = new Vector3(0, 4, -8);

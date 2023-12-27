@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChangeAlphaOnCollision : MonoBehaviour
 {
-    public GameObject planeObject; // Assign the plane GameObject in the Unity Editor
+    public GameObject planeObject; 
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,18 +20,18 @@ public class ChangeAlphaOnCollision : MonoBehaviour
         {
             Material material = planeRenderer.material;
 
-            // Get the current color
+            // Current color
             Color currentColor = material.color;
 
-            // Set the new alpha value (55 / 255)
+            // Set new alpha
             float newAlpha = 55f / 255f;
 
-            // Set the new color with the updated alpha value
+            // Set new color with updated alpha value
             material.color = new Color(currentColor.r, currentColor.g, currentColor.b, newAlpha);
         }
         else
         {
-            Debug.LogWarning("Plane Renderer not found on the specified GameObject.");
+            Debug.Log("Plane Renderer not found");
         }
     }
 }
