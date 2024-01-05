@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1141696587}
   - component: {fileID: 1141696586}
   m_Layer: 0
-  m_Name: NEW Grumpy Cat enemy2
+  m_Name: Grumpy Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
