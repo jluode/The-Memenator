@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5000,6 +5000,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1054365018}
     m_Modifications:
     - target: {fileID: 1141696586, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1337866864}
+    - target: {fileID: 1141696586, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
       propertyPath: Oikea
       value: 
       objectReference: {fileID: 69748216}
@@ -5007,9 +5011,25 @@ PrefabInstance:
       propertyPath: Vasen
       value: 
       objectReference: {fileID: 2100189519}
+    - target: {fileID: 1141696586, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: idleDuration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5029,15 +5049,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5051,9 +5071,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2373946496742746352, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
       propertyPath: m_Name
       value: Grumpy Cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373946496742746352, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373946496742746352, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040486336508303557, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: range
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040486336508303557, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040486336508303557, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 1720783767}
+    - target: {fileID: 4040486336508303557, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040486336508303557, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: colliderDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040486336508303557, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
@@ -5663,6 +5719,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1337866864 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1336012239199274903, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+  m_PrefabInstance: {fileID: 477841777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1428202445
 GameObject:
   m_ObjectHideFlags: 0
@@ -5754,6 +5815,10 @@ PrefabInstance:
       propertyPath: ninjaStar
       value: 
       objectReference: {fileID: 2097166437}
+    - target: {fileID: 1552284331, guid: ae674777fe1a4e24f9decd6675036cb8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1552284332, guid: ae674777fe1a4e24f9decd6675036cb8, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -5887,6 +5952,11 @@ Transform:
 --- !u!4 &1720783764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 992728688216574828, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
+  m_PrefabInstance: {fileID: 477841777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1720783767 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1141696587, guid: 6fe728581af2ada448d12f36cc8eb15c, type: 3}
   m_PrefabInstance: {fileID: 477841777}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1741836180

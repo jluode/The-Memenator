@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 992728688216574828}
   - component: {fileID: 1141696584}
   - component: {fileID: 1141696587}
+  - component: {fileID: 1670711256428411136}
+  - component: {fileID: 4040486336508303557}
   - component: {fileID: 1141696586}
   m_Layer: 0
   m_Name: Grumpy Cat
@@ -64,6 +66,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15.2, y: 25.00135, z: 4.2}
   m_Center: {x: 0, y: 3.9943337, z: 0}
+--- !u!114 &1670711256428411136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373946496742746352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57d70666171a7243b3f94f8290168f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 5
+  maxHealth: 5
+  currentHealth: 0
+--- !u!114 &4040486336508303557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373946496742746352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c4a5fb64014034697acc21c051a6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 1
+  range: 1.7
+  damage: 2
+  colliderDistance: 5
+  boxCollider: {fileID: 1141696587}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1141696586
 MonoBehaviour:
   m_ObjectHideFlags: 0
