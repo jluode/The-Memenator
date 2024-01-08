@@ -8,19 +8,24 @@ namespace Memenator
     {
         [SerializeField] GameObject katana;
         [SerializeField] GameObject ninjaStar;
-
+        [SerializeField] GameObject katanaAttackCollider;
         [SerializeField] GameObject currentWeapon;
+        [SerializeField] GameObject ninjaStarPrefab;
         
         Animator animator;
 
         bool inFightMode = false;
-        
+
+        public PlayerMovement pm;
+
 
         void Start()
         {
         katana.SetActive(false);
         ninjaStar.SetActive(false);
         animator = GetComponent<Animator>();
+        pm = GetComponent<PlayerMovement>();
+        katanaAttackCollider.SetActive(false);
         }
 
 
@@ -30,7 +35,6 @@ namespace Memenator
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FightMode();
-
             }
             if (inFightMode)
             {
@@ -68,52 +72,67 @@ namespace Memenator
 
         void EquipKatana()
         {
-            // Deactivate the current weapon (if any)
             DeactivateCurrentWeapon();
-
-            // Activate the Katana
             katana.SetActive(true);
-
-            // Set the current weapon to the Katana
+            katanaAttackCollider.SetActive(false);
             currentWeapon = katana;
         }
 
         void EquipNinjaStar()
         {
-            // Deactivate the current weapon (if any)
             DeactivateCurrentWeapon();
-
-            // Activate the NinjaStar
             ninjaStar.SetActive(true);
-
-            // Set the current weapon to the NinjaStar
             currentWeapon = ninjaStar;
         }
-
+        
+        // Piilottaa tämänhetkisen aseen
         void DeactivateCurrentWeapon()
         {
-            // Deactivate the current weapon (if any)
             if (currentWeapon != null)
             {
                 currentWeapon.SetActive(false);
             }
         }
 
-        void DestroyWeapon()
-        {
-            Destroy(currentWeapon);
-        }
+        //void DestroyWeapon()
+        //{
+        //    Destroy(currentWeapon);
+        //}
 
-
+        // Melee hyökkäykselle on eri animaatiot, riippuen siitä kumpaan suuntaan pelaaja on menossa. Lisäksi tässä määritellään aseen colliderin aktivoitumisajaksi 1 sekunti
         void MeleeAttack()
         {
-            Debug.Log("Melee attacked");
-        }
+            if (pm.facingRight)
+            {
+                animator.SetTrigger("Melee");
+                StartCoroutine(ActivateColliderForDuration(1f));
+            }
+            else
+            {
+                animator.SetTrigger("MeleeLeft");
+                StartCoroutine(ActivateColliderForDuration(1f));
+            }
 
+            
+        }
         void RangedAttack()
         {
-            Debug.Log("Range attacked");
+            // Get the mouse click position in the world space
+            Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetPosition.z = 0f;
+
+            // Calculate the direction to the target position relative to the player's position
+            Vector3 direction = (targetPosition - transform.position).normalized;
+
+            // Instantiate a clone of the NinjaStar prefab
+            GameObject ninjaStarClone = Instantiate(ninjaStarPrefab, currentWeapon.transform.position, Quaternion.identity);
+
+            // Apply force to launch the NinjaStar towards the target position
+            float launchForce = 20f;  // You can adjust this value
+            ninjaStarClone.GetComponent<Rigidbody2D>().AddForce(direction * launchForce, ForceMode2D.Impulse);
         }
+
+        // Fight mode päällä pelaaja muuttuu "suuttuneeksi" ja silloin voi valita aseen ja hyökätä
         void FightMode()
         {
             inFightMode = !inFightMode;
@@ -123,9 +142,18 @@ namespace Memenator
             // Jos poistut tappelutilasta, ase häviää
             if (!inFightMode)
             {
-                DestroyWeapon();
+                DeactivateCurrentWeapon();  
                 Debug.Log("FIGHT MODE OFF...");
             }
+        }
+        // Tämä aktivoi katanassa olevan colliderin hyökkäyksen ajaksi, jotta katanan collider ei ole aina aktiivinen ja näin ollen katana kädessä voisi esim. vain hypätä tai juosta vihollista päin
+        private IEnumerator ActivateColliderForDuration(float duration)
+        {
+            katanaAttackCollider.SetActive(true);
+
+            yield return new WaitForSeconds(duration);
+
+            katanaAttackCollider.SetActive(false);
         }
     }
 }

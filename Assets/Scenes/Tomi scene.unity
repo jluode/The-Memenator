@@ -22093,7 +22093,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 112.9
+  field of view: 25
   orthographic: 0
   orthographic size: 6.91
   m_Depth: -0
@@ -22138,7 +22138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2320279e4145a744f8bbf3128eb762ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1668554707}
+  player: {fileID: 1025037520}
 --- !u!1001 &898571328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24909,6 +24909,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022488808}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1025037520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1552284331, guid: ae674777fe1a4e24f9decd6675036cb8, type: 3}
+  m_PrefabInstance: {fileID: 3856100868120115098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1026546545
 GameObject:
   m_ObjectHideFlags: 0
@@ -38608,11 +38613,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668175967}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1668554707 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3856100869710538825, guid: ae674777fe1a4e24f9decd6675036cb8, type: 3}
-  m_PrefabInstance: {fileID: 3856100868120115098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1671193158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e982ae48c0210b479f342cfa4801734, type: 3}
