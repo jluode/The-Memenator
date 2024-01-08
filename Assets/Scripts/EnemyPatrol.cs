@@ -16,11 +16,13 @@ public class EnemyPatrol: MonoBehaviour
     private Vector3 initScale;
     private bool movingLeft;
 
+    
+
+    
     private void Awake()
     {
         initScale = Enemy.localScale;
     }
-
     private void Update()
     {
         if (movingLeft) 
@@ -29,8 +31,6 @@ public class EnemyPatrol: MonoBehaviour
                 MoveInDirection(-1);
             else
                 DirectionChange();
-            
-        
         }
 
         else 
@@ -39,24 +39,23 @@ public class EnemyPatrol: MonoBehaviour
                 MoveInDirection(1);
             else
                 DirectionChange();
-            
-
         }
         
     }
-
     private void DirectionChange()
     {
+        
         movingLeft = !movingLeft;
     }
     private void MoveInDirection(int _direction)
     {
         //Face direction
-        Enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction, initScale.y, initScale.z);
+        Enemy.localScale = new Vector3(Mathf.Abs(initScale.x) 
+            * _direction, initScale.y, initScale.z);
 
         //Move Direction
-        Enemy.position = new Vector3(Enemy.position.x + Time.deltaTime * _direction * speed, Enemy.position.y, Enemy.position.z);
-
+        Enemy.position = new Vector3(Enemy.position.x + Time.deltaTime 
+            * _direction * speed, Enemy.position.y, Enemy.position.z);
     }
 
 
