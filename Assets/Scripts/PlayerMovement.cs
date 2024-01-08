@@ -64,7 +64,7 @@ namespace Memenator
             {
                 if (katana != null)
                 {
-                    katana.localPosition = new Vector3(facingLeft ? -0.37f : -0.37f, -0.14f, 0f);
+                    katana.localPosition = new Vector3(facingLeft ? -3f : -3f, -1f, 0f);
                     katana.localRotation = Quaternion.Euler(0f, 0f, facingLeft ? 70f : -70f);
                 }
                 if (ninjaStar != null)
