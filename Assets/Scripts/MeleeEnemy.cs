@@ -36,7 +36,7 @@ public class MeleeEnemy : MonoBehaviour
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
-                anim.SetTrigger("meleeAttack");
+                anim.SetTrigger("NEW Grumpy Cat attack");
             }
         }
 
@@ -52,6 +52,7 @@ public class MeleeEnemy : MonoBehaviour
             playerHealth = hit.transform.GetComponent<EnemyHealth>();
         
         return hit.collider != null;
+        
     }
     private void OnDrawGizmos()
     {
