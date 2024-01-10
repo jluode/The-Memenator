@@ -69,8 +69,8 @@ namespace Memenator
                 }
                 if (ninjaStar != null)
                 {
-                    ninjaStar.localPosition = new Vector3(facingLeft ? 0.45f : 0.45f, -0.15f, 0f);
-                    ninjaStar.localRotation = Quaternion.Euler(0f, 0f, facingLeft ? 30f : -30f);
+                    ninjaStar.localPosition = new Vector3(facingLeft ? 3f : 3f, -1.15f, 0f);
+                    //ninjaStar.localRotation = Quaternion.Euler(0f, 0f, facingLeft ? 30f : -30f);
                 }
             }
         }

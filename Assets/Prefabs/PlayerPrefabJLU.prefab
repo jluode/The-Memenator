@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 451917617}
   - component: {fileID: 451917622}
   - component: {fileID: 451917623}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player2D
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -67,8 +67,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.3359375, y: 6.6145105, z: 2}
+  m_Center: {x: -0.059669495, y: 0.14487565, z: 0}
 --- !u!114 &1552284337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +169,8 @@ MonoBehaviour:
   ninjaStar: {fileID: 3837071870082516273}
   katanaAttackCollider: {fileID: 2052627473}
   currentWeapon: {fileID: 0}
+  ninjaStarPrefab: {fileID: 4784888473227901642, guid: 7b13108b4d94a474392483908926043b, type: 3}
+  ra: {fileID: 0}
   pm: {fileID: 1552284337}
 --- !u!95 &451917623
 Animator:
@@ -261,7 +263,7 @@ Transform:
   m_GameObject: {fileID: 3856100869706047827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.25, y: 2, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 0.8333333}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1552284332}
@@ -289,27 +291,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155083179811466084, guid: 7f027b2988b61e5488eb8b783b749cdc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6155083179811466084, guid: 7f027b2988b61e5488eb8b783b749cdc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6155083179811466084, guid: 7f027b2988b61e5488eb8b783b749cdc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6155083179811466084, guid: 7f027b2988b61e5488eb8b783b749cdc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.37
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6155083179811466084, guid: 7f027b2988b61e5488eb8b783b749cdc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6155083179811466084, guid: 7f027b2988b61e5488eb8b783b749cdc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6155083179811466084, guid: 7f027b2988b61e5488eb8b783b749cdc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -375,12 +377,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4351219871277420752, guid: 7b13108b4d94a474392483908926043b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351219871277420752, guid: 7b13108b4d94a474392483908926043b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351219871277420752, guid: 7b13108b4d94a474392483908926043b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351219871277420752, guid: 7b13108b4d94a474392483908926043b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.43
+      value: 2.89
       objectReference: {fileID: 0}
     - target: {fileID: 4351219871277420752, guid: 7b13108b4d94a474392483908926043b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.161
+      value: -1.13
       objectReference: {fileID: 0}
     - target: {fileID: 4351219871277420752, guid: 7b13108b4d94a474392483908926043b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -418,7 +432,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: NinjaStar
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1029166437066014224, guid: 7b13108b4d94a474392483908926043b, type: 3}
+    - {fileID: 6934883848816657614, guid: 7b13108b4d94a474392483908926043b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b13108b4d94a474392483908926043b, type: 3}
 --- !u!1 &3837071870082516273 stripped
 GameObject:

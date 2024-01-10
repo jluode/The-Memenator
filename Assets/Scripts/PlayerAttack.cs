@@ -6,15 +6,16 @@ namespace Memenator
 {
     public class PlayerAttack : MonoBehaviour
     {
+        // Muuttujat aseille
         [SerializeField] GameObject katana;
         [SerializeField] GameObject ninjaStar;
         [SerializeField] GameObject katanaAttackCollider;
-        [SerializeField] GameObject currentWeapon;
+        public GameObject currentWeapon;
         [SerializeField] GameObject ninjaStarPrefab;
-        
+
         Animator animator;
 
-        bool inFightMode = false;
+        public bool inFightMode = false;
 
         public PlayerMovement pm;
 
@@ -67,7 +68,7 @@ namespace Memenator
                     }
                 }
             }
-
+            //Debug.Log(Input.mousePosition);
         }
 
         void EquipKatana()
@@ -94,10 +95,6 @@ namespace Memenator
             }
         }
 
-        //void DestroyWeapon()
-        //{
-        //    Destroy(currentWeapon);
-        //}
 
         // Melee hyökkäykselle on eri animaatiot, riippuen siitä kumpaan suuntaan pelaaja on menossa. Lisäksi tässä määritellään aseen colliderin aktivoitumisajaksi 1 sekunti
         void MeleeAttack()
@@ -117,20 +114,28 @@ namespace Memenator
         }
         void RangedAttack()
         {
-            // Get the mouse click position in the world space
-            Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition.z = 0f;
+            // Säde (raycast) kameran läpi näytöllä näkyvään sijaintiin peliobjektissa. Kaikki mihin ei haluta klikkauksen reagoivan, pitää laittaa IgnoreRaycast-layeriin
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-            // Calculate the direction to the target position relative to the player's position
-            Vector3 direction = (targetPosition - transform.position).normalized;
+            // Jos säde osuu objektiin ruudulla:
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Luo heittotähti clone
+                GameObject ninjaStarClone = Instantiate(ninjaStarPrefab, currentWeapon.transform.position, Quaternion.identity);
 
-            // Instantiate a clone of the NinjaStar prefab
-            GameObject ninjaStarClone = Instantiate(ninjaStarPrefab, currentWeapon.transform.position, Quaternion.identity);
+                // Laske suunta pelaajasta säteen osumaan
+                Vector3 direction = (hit.point - currentWeapon.transform.position).normalized;
 
-            // Apply force to launch the NinjaStar towards the target position
-            float launchForce = 20f;  // You can adjust this value
-            ninjaStarClone.GetComponent<Rigidbody2D>().AddForce(direction * launchForce, ForceMode2D.Impulse);
+                // Voima jolla klooni ammutaan kohdetta kohti
+                float launchForce = 30f;
+                ninjaStarClone.GetComponent<Rigidbody>().AddForce(direction * launchForce, ForceMode.Impulse);
+
+                // Tuhoa ammuttu heittotähti määritetyn viiveen jälkeen
+                StartCoroutine(DestroyCloneAfterDelay(ninjaStarClone, 2f));
+            }
         }
+
 
         // Fight mode päällä pelaaja muuttuu "suuttuneeksi" ja silloin voi valita aseen ja hyökätä
         void FightMode()
@@ -154,6 +159,18 @@ namespace Memenator
             yield return new WaitForSeconds(duration);
 
             katanaAttackCollider.SetActive(false);
+        }
+        private IEnumerator DestroyCloneAfterDelay(GameObject clone, float delay)
+        {
+            // Wait for the specified delay
+            yield return new WaitForSeconds(delay);
+
+            // Check if the clone still exists (it might have been destroyed by other means)
+            if (clone != null)
+            {
+                // Destroy the clone
+                Destroy(clone);
+            }
         }
     }
 }
