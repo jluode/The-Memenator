@@ -9,6 +9,12 @@ TagManager:
   - Weapon
   - Katana
   - NinjaStar
+  - Star
+  - Hashtag
+  - Zero
+  - Seven
+  - Eight
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -18,7 +24,7 @@ TagManager:
   - UI
   - Enemy
   - Player
-  - 
+  - Raycast
   - 
   - 
   - 
