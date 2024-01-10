@@ -1,72 +1,90 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 namespace Memenator
 {
     public class BossReset : MonoBehaviour
     {
         public PlayerAttack pA;
-        private List<string> expectedSequence = new List<string> { "Star", "Hashtag", "Seven", "Seven", "Eight", "Zero", "Hashtag" };
+        private Dictionary<string, char> sequenceDigitMapping = new Dictionary<string, char>
+        {
+            { "Star", '*' },
+            { "Hashtag", '#' },
+            { "Seven", '7' },
+            { "Eight", '8' },
+            { "Zero", '0' }
+            // Add more mappings as needed
+        };
+
+        private List<string> correctSequence = new List<string> { "Star", "Hashtag", "Seven", "Seven", "Eight", "Zero", "Hashtag" };
         private List<string> currentSequence = new List<string>();
-        Rigidbody rb;
+        private Rigidbody rb;
+        [SerializeField] GameObject blackScreen;
+        [SerializeField] TextMeshPro digits;
+
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
+            blackScreen.SetActive(false);
         }
+
         void Update()
         {
-            // Check for mouse clicks
             if (Input.GetMouseButtonDown(0) && pA.inFightMode && pA.currentWeapon != null)
             {
-                // Shoot a ray from the camera through the mouse position
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                // Perform a raycast to get the hit information
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
-                    // Check if the hit object has a collider and a tag
                     if (hit.collider != null && !string.IsNullOrEmpty(hit.collider.tag))
                     {
-                        HandleSequence(hit.collider.tag);
+                        CodeSequence(hit.collider.tag);
                     }
                 }
             }
         }
 
-        private void HandleSequence(string tag)
+        private void CodeSequence(string tag)
         {
-            // Log the clicked tag
-            Debug.Log("Clicked: " + tag);
-
-            // Check if the clicked tag matches the expected sequence
-            if (expectedSequence.Count > 0 && tag == expectedSequence[0])
+            if (correctSequence.Count > 0 && tag == correctSequence[0])
             {
-                // Log the correct tag in the sequence
-                Debug.Log("Correct!");
-
-                // Remove the correct tag from the expected sequence
-                expectedSequence.RemoveAt(0);
-
-                // Add the tag to the current sequence
+                correctSequence.RemoveAt(0);
                 currentSequence.Add(tag);
 
-                // Check if the sequence is complete
-                if (expectedSequence.Count == 0)
+                UpdateDigitsText();
+
+                if (correctSequence.Count == 0)
                 {
-                    // Log the complete sequence
-                    Debug.Log("Sequence Complete!");
+                    Debug.Log("You Fu**ing did it!");
+                    StartCoroutine(ShowBlackScreenWithDelay(1f));
+                    StartCoroutine(HideDigitsWithDelay(1f));
                     rb.constraints = RigidbodyConstraints.None;
-                    // Clear the current sequence for the next round
-                    currentSequence.Clear();
                 }
-            }
-            else
-            {
-                // Log an incorrect tag
-                Debug.Log("Incorrect!");
             }
         }
 
+        private void UpdateDigitsText()
+        {
+            if (digits != null)
+            {
+                if (sequenceDigitMapping.TryGetValue(currentSequence[currentSequence.Count - 1], out char mappedDigit))
+                {
+                    digits.text += mappedDigit;
+                }
+            }
+        }
+        private IEnumerator ShowBlackScreenWithDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            blackScreen.SetActive(true);
+        }
+
+        private IEnumerator HideDigitsWithDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            digits.gameObject.SetActive(false);
+        }
     }
 }

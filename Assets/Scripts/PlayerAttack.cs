@@ -112,6 +112,8 @@ namespace Memenator
 
             
         }
+
+
         void RangedAttack()
         {
             // S‰de (raycast) kameran l‰pi n‰ytˆll‰ n‰kyv‰‰n sijaintiin peliobjektissa. Kaikki mihin ei haluta klikkauksen reagoivan, pit‰‰ laittaa IgnoreRaycast-layeriin
@@ -128,7 +130,7 @@ namespace Memenator
                 Vector3 direction = (hit.point - currentWeapon.transform.position).normalized;
 
                 // Voima jolla klooni ammutaan kohdetta kohti
-                float launchForce = 30f;
+                float launchForce = 20f;
                 ninjaStarClone.GetComponent<Rigidbody>().AddForce(direction * launchForce, ForceMode.Impulse);
 
                 // Tuhoa ammuttu heittot‰hti m‰‰ritetyn viiveen j‰lkeen
