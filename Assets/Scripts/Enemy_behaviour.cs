@@ -61,7 +61,7 @@ public class Enemy_behaviour : MonoBehaviour
         //RaycastHit hit;
        // if (Physics.Raycast(ray, out hit, rayCastLength, raycastMask))
         //{
-            // Do something with the hit information, e.g., check hit.collider.gameObject, hit.point, etc.
+            
         //    Debug.Log("Hit something: " + hit.collider.gameObject.name);
         //}
         // if(hit.collider != null)
