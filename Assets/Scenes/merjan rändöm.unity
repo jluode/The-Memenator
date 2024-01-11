@@ -918,6 +918,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &3584998119908888639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.100614
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 36.496548
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.1241605
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595494024784256436, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6791939628779619821, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
+      propertyPath: m_Name
+      value: Trump enemy prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca24cdf012a87ae41b43a039f3682e0c, type: 3}
 --- !u!1 &3618697192378763333
 GameObject:
   m_ObjectHideFlags: 0
