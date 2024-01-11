@@ -6,12 +6,16 @@ using UnityEngine;
 public class Enemy_behaviour : MonoBehaviour
 {
     #region public Variables
-    public Transform raycast;
-    public LayerMask raycastMask;
-    public float rayCastLength;
+    //public Transform raycast;
+    //public LayerMask raycastMask;
+    //public float rayCastLength = 5f;
     public float attackDistance;
-    public float movespeed;
+    public float moveSpeed;
     public float timer;
+    public GameObject player;
+    public GameObject followSpot;
+    public float chaseDistance = 10.0f;
+    public GameObject territory;
     #endregion
 
     #region private variables
@@ -23,6 +27,7 @@ public class Enemy_behaviour : MonoBehaviour
     private bool inRange;
     private bool cooling;
     private float intTimer;
+    private Transform playerTransform;
     #endregion
 
     private void Awake()
@@ -30,27 +35,40 @@ public class Enemy_behaviour : MonoBehaviour
         intTimer = timer;
         anim = GetComponent<Animator>();
     }
-
+    
     void Update()
     {
+        
+        //if (playerTransform != null)
+        //{
+
+        //   transform.position = Vector3.Lerp(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
+        //}
+        //PerformRaycast();
         if (!attackMode)
         {
-            Move();
+            //Move(playerTransform.position);
         }
 
         if (inRange)
         {
             anim.SetBool("Attack", true);
-            Debug.Log(anim.GetBool("Attack"));
+            //Debug.Log(anim.GetBool("Attack"));
             //hit = Physics2D.Raycast(raycast.position, Vector2.left, rayCastLength, raycastMask);
-            //RaycastDebugger();
+           // RaycastDebugger();
         }
-
-        if(hit.collider != null)
-        {
-            //EnemyLogic();
-        }
-
+        //Ray ray = new Ray(transform.position, Vector3.left);
+        //RaycastHit hit;
+       // if (Physics.Raycast(ray, out hit, rayCastLength, raycastMask))
+        //{
+            
+        //    Debug.Log("Hit something: " + hit.collider.gameObject.name);
+        //}
+        // if(hit.collider != null)
+        //{
+        //EnemyLogic();
+        //}
+        
         else if (hit.collider == null) 
         {
             //inRange = false;
@@ -62,14 +80,22 @@ public class Enemy_behaviour : MonoBehaviour
             //StopAttack();
         }
     }
+    
 
+    
+   
+
+    
+    
     private void OnTriggerEnter(Collider trig)
     {
         if(trig.CompareTag("Player"))
         {
             target = trig.gameObject;
             inRange = true;
-            Debug.Log(target);
+            //Debug.Log("target");
+
+
         }
     }
     private void OnTriggerExit(Collider trig)
@@ -78,45 +104,68 @@ public class Enemy_behaviour : MonoBehaviour
         {
             target = trig.gameObject;
             inRange = false;
-            Debug.Log(target);
+            //Debug.Log("targetOut");
         }
     }
 
     void EnemyLogic()
     {
-        distance = Vector2.Distance(transform.position, target.transform.position);
+        distance = Vector3.Distance(transform.position, target.transform.position);
 
         if (distance < attackDistance)
         {
-            Move();
+            ///Move();
             StopAttack();
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
         }
 
         else if (attackDistance >= distance && cooling == false)
         {
             Attack();
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
         }
 
         if(cooling) 
         {
             anim.SetBool("Attack", false);
-            Debug.Log("Attack3");
+            //Debug.Log("Attack3");
 
         }
     }
 
-    void Move()
+    //void PerformRaycast()
+    //{
+        //Vector3 localRaycastDirection = Vector3.right;
+        //Vector3 worldRaycastDirection = transform.TransformDirection(localRaycastDirection);
+        //Vector3 raycastDirection = transform.right * 1f;
+        //Ray ray = new Ray(transform.position, Vector3.right);
+        //RaycastHit hit;
+        
+        //if (Physics.Raycast(ray, out hit, rayCastLength, raycastMask))
+        //{
+            
+          //  if (hit.collider.CompareTag("Player"))
+            //{
+              //  playerTransform = hit.collider.transform;
+                //Move(hit.point);
+            //}
+        //}
+    //}
+    void Move(Vector3 playerPosition)
     {
+        Vector3 direction = (playerPosition - transform.position).normalized;
+        transform.Translate(direction * moveSpeed * Time.deltaTime);
+
         anim.SetBool("CanWalk", true);
 
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("NEWGrumpyCatattack"))
         {
-            Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, movespeed * Time.deltaTime);
+            //Vector3 direction = (playerPosition - transform.position).normalized;
+            //transform.Translate(direction * moveSpeed * Time.deltaTime);
         }
     }
+
+    
 
     void Attack()
     {
@@ -145,19 +194,20 @@ public class Enemy_behaviour : MonoBehaviour
         anim.SetBool("Attack", false);
     }
 
-    void RaycastDebugger()
-    {
-        if(distance > attackDistance)
-        {
-            Debug.DrawRay(raycast.position, Vector2.left * rayCastLength, Color.red);
-            Debug.Log(distance);
-        }
+   // void RaycastDebugger()
+    //{
+    //    if(distance > attackDistance)
+   // {
+   // Debug.DrawRay(raycast.position, Vector3.left * rayCastLength, Color.red);
+   // Debug.Log(distance);
+   // }
 
-        else if (attackDistance > distance)
-        {
-            Debug.DrawRay(raycast.position, Vector2.left * rayCastLength, Color.green);
-        }
-    }
+    //    else if (attackDistance > distance)
+   //     {
+    
+   //     Debug.DrawRay(raycast.position, Vector3.left * rayCastLength, Color.green);
+   //     }
+   // }
 
     public void TriggerCooling()
     {
