@@ -31,7 +31,7 @@ namespace Memenator
 
         private void Update()
         {
-            isGrounded = Physics.Raycast(transform.position, Vector3.down, 2.5f, groundLayer);
+            isGrounded = Physics.Raycast(transform.position, Vector3.down, 4f, groundLayer);
 
             float horizontalInput = Input.GetAxis("Horizontal");
             Vector3 movement = new Vector3(horizontalInput, 0f, 0f) * moveSpeed * Time.deltaTime;
@@ -65,7 +65,7 @@ namespace Memenator
                 if (katana != null)
                 {
                     katana.localPosition = new Vector3(facingLeft ? -3f : -3f, -1f, 0f);
-                    katana.localRotation = Quaternion.Euler(0f, 0f, facingLeft ? 70f : -70f);
+                    katana.localRotation = Quaternion.Euler(0f, 0f, facingLeft ? -70f : -70f);
                 }
                 if (ninjaStar != null)
                 {
