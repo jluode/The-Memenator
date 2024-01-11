@@ -5,10 +5,12 @@ using UnityEngine;
 public class LevelEnd : MonoBehaviour
 {
     [SerializeField] GameObject fireworks;
+    [SerializeField] Canvas canvas;
 
     void Start()
     {
         fireworks.SetActive(false);
+        canvas.enabled = false;
     }
 
 
@@ -18,6 +20,7 @@ public class LevelEnd : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ShowFireworks();
+            canvas.enabled = true;
         }
     }
     void ShowFireworks()
